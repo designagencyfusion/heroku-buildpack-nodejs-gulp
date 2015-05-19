@@ -199,10 +199,10 @@ function compile_assets_with_gulp() {
 
     # Install gulp locally
     npm install gulp
-    status "Found gulpfile, running gulp heroku:build task"
+    info "Found gulpfile, running gulp heroku:build task"
     $build_dir/node_modules/.bin/gulp heroku:build
   else
-    status "No gulpfile found"
+    info "No gulpfile found"
   fi
 }
 
