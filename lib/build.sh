@@ -189,6 +189,23 @@ function build_dependencies() {
   fi
 }
 
+function compile_assets_with_gulp() {
+  if [ -f $build_dir/gulpfile.js ]; then
+    # get the env vars
+    # if [ -d "$env_dir" ]; then
+    #  status "Exporting config vars to environment"
+    #  export_env_dir $env_dir
+    # fi
+
+    # Install gulp locally
+    npm install gulp
+    status "Found gulpfile, running gulp heroku:build task"
+    $build_dir/node_modules/.bin/gulp heroku:build
+  else
+    status "No gulpfile found"
+  fi
+}
+
 ensure_procfile() {
   local start_method=$1
   local build_dir=$2
